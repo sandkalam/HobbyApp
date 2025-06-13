@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dashboard | HobbyApp</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <script src="https://unpkg.com/lucide-react@0.395.0/dist/lucide-react.js"></script>
+        <script src="https://unpkg.com/lucide-static@0.395.0/dist/lucide.js"></script>
+
+        <style>
+            /* Mengaplikasikan font Poppins ke seluruh halaman */
+            body {
+                font-family: "Poppins", sans-serif;
+                background-color: #f8f9fa; /* Latar belakang abu-abu muda */
+            }
+            /* Style untuk scrollbar (opsional, tapi mempercantik) */
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+            ::-webkit-scrollbar-track {
+                background: #f1f1f1;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #888;
+                border-radius: 4px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
+        </style>
+    </head>
+    <body class="bg-gray-100 text-gray-800">
+        <div class="flex h-screen">
+            <aside
+                class="w-64 flex-shrink-0 bg-white border-r border-gray-200 flex-col hidden sm:flex"
+            >
+                <div
+                    class="h-16 flex items-center justify-center border-b border-gray-200"
+                >
+                    <button href="/" class="text-2xl font-bold text-blue-600">
+                        HobbyApp
+                    </button>
+                </div>
+                <nav class="flex-grow p-4 space-y-2">
+                    <a
+                        href="#"
+                        class="flex items-center px-4 py-2 text-gray-700 bg-gray-200 rounded-lg font-semibold"
+                    >
+                        <i
+                            data-lucide="layout-dashboard"
+                            class="w-5 h-5 mr-3"
+                        ></i>
+                        Dashboard
+                    </a>
+                    <p
+                        class="px-4 pt-4 pb-2 text-xs text-gray-500 font-medium uppercase"
+                    >
+                        APLIKASIKU
+                    </p>
+                    <a
+                        href="/app/group"
+                        class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg"
+                    >
+                        <i data-lucide="component" class="w-5 h-5 mr-3"></i>
+                        Generator Kelompok
+                    </a>
+                    <a
+                        href="#"
+                        class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg"
+                    >
+                        <i data-lucide="book-open" class="w-5 h-5 mr-3"></i>
+                        Pelacak Buku
+                    </a>
+                    <a
+                        href="#"
+                        class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg"
+                    >
+                        <i data-lucide="clapperboard" class="w-5 h-5 mr-3"></i>
+                        Daftar Tonton
+                    </a>
+                    <a
+                        href="#"
+                        class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg"
+                    >
+                        <i data-lucide="sprout" class="w-5 h-5 mr-3"></i>
+                        Jurnal Tanaman
+                    </a>
+                    <a
+                        href="#"
+                        class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg"
+                    >
+                        <i data-lucide="dumbbell" class="w-5 h-5 mr-3"></i>
+                        Log Latihan
+                    </a>
+                    <a
+                        href="#"
+                        class="flex items-center px-4 py-2 text-blue-600 hover:bg-blue-50 rounded-lg"
+                    >
+                        <i data-lucide="plus-circle" class="w-5 h-5 mr-3"></i>
+                        Tambah Hobi
+                    </a>
+                    <div class="absolute bottom-0 w-full p-4 left-0">
+                        <a
+                            href="#"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg"
+                        >
+                            <i data-lucide="settings" class="w-5 h-5 mr-3"></i>
+                            Pengaturan
+                        </a>
+                        <!-- version -->
+                        <span
+                            class="block text-sm text-center text-gray-500 mb-2"
+                            >Versi App 1.0.0</span
+                        >
+                    </div>
+                </nav>
+            </aside>
+
+            <div class="flex-1 flex flex-col overflow-hidden">
+                <header
+                    class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6"
+                >
+                    <div class="relative hidden md:block">
+                        <i
+                            data-lucide="search"
+                            class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+                        ></i>
+                        <input
+                            type="text"
+                            placeholder="Cari di semua hobi..."
+                            class="pl-10 pr-4 py-2 w-72 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+                    <button class="sm:hidden">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                    <div class="flex items-center space-x-4">
+                        <button
+                            class="relative text-gray-500 hover:text-gray-700"
+                        >
+                            <i data-lucide="bell" class="w-6 h-6"></i>
+                            <span
+                                class="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"
+                            ></span>
+                        </button>
+                        <div class="flex items-center space-x-2">
+                            <img
+                                src="https://i.pravatar.cc/40"
+                                alt="User Avatar"
+                                class="w-10 h-10 rounded-full"
+                            />
+                            <div class="hidden md:block">
+                                <p class="font-semibold text-sm">Sandika</p>
+                                <p class="text-xs text-gray-500">
+                                    Level 5 Hobbyist
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <main class="flex-1 overflow-y-auto p-6">
+                    <h2 class="text-3xl font-bold mb-6">Dashboard Utama</h2>
+
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+                    >
+                        <div
+                            class="bg-white p-6 rounded-xl shadow-md flex flex-col space-y-4 hover:shadow-lg transition-shadow duration-300"
+                        >
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-semibold">
+                                    Sedang Dibaca 📖
+                                </h3>
+                                <i
+                                    data-lucide="more-horizontal"
+                                    class="text-gray-400"
+                                ></i>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <img
+                                    src="https://covers.openlibrary.org/b/id/10313133-L.jpg"
+                                    alt="Book Cover"
+                                    class="w-16 h-24 object-cover rounded"
+                                />
+                                <div>
+                                    <p class="font-bold">Project Hail Mary</p>
+                                    <p class="text-sm text-gray-500">
+                                        Andy Weir
+                                    </p>
+                                </div>
+                            </div>
+                            <div>
+                                <div
+                                    class="flex justify-between text-sm text-gray-500 mb-1"
+                                >
+                                    <span>Progress</span>
+                                    <span>80%</span>
+                                </div>
+                                <div
+                                    class="w-full bg-gray-200 rounded-full h-2.5"
+                                >
+                                    <div
+                                        class="bg-blue-600 h-2.5 rounded-full"
+                                        style="width: 80%"
+                                    ></div>
+                                </div>
+                            </div>
+                            <button
+                                class="w-full mt-2 py-2 px-4 bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold rounded-lg transition-colors"
+                            >
+                                Perbarui Progress
+                            </button>
+                        </div>
+
+                        <div
+                            class="bg-white p-6 rounded-xl shadow-md flex flex-col space-y-4 hover:shadow-lg transition-shadow duration-300"
+                        >
+                            <h3 class="text-lg font-semibold">
+                                Selanjutnya Ditonton 🎬
+                            </h3>
+                            <div class="relative">
+                                <img
+                                    src="https://image.tmdb.org/t/p/w500/1m020A62iK6mD1i8vC2l2Y44aK9.jpg"
+                                    alt="Movie Poster"
+                                    class="rounded-lg w-full h-40 object-cover"
+                                />
+                                <div
+                                    class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent rounded-b-lg"
+                                >
+                                    <h4 class="text-white font-bold">
+                                        Dune: Part Two
+                                    </h4>
+                                    <p class="text-xs text-gray-200">
+                                        Sci-Fi, Adventure
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button
+                                    class="w-full py-2 px-2 bg-green-100 text-green-800 font-semibold rounded-lg hover:bg-green-200 transition-colors text-sm"
+                                >
+                                    Tandai Selesai
+                                </button>
+                                <button
+                                    class="py-2 px-4 bg-gray-100 text-gray-700 font-semibold rounded-lg hover:bg-gray-200 transition-colors"
+                                >
+                                    <i data-lucide="info"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div
+                            class="bg-white p-6 rounded-xl shadow-md flex flex-col space-y-4 hover:shadow-lg transition-shadow duration-300"
+                        >
+                            <h3 class="text-lg font-semibold">
+                                Perlu Perhatian 🌱
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <p>Monstera Deliciosa</p>
+                                    <span
+                                        class="text-sm font-medium text-red-600 bg-red-100 px-2 py-1 rounded-full"
+                                        >Siram Hari Ini</span
+                                    >
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <p>Sansevieria</p>
+                                    <span
+                                        class="text-sm font-medium text-yellow-600 bg-yellow-100 px-2 py-1 rounded-full"
+                                        >Cek dalam 2 hari</span
+                                    >
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <p>Pothos</p>
+                                    <span
+                                        class="text-sm font-medium text-green-600 bg-green-100 px-2 py-1 rounded-full"
+                                        >Aman</span
+                                    >
+                                </div>
+                            </div>
+                            <button
+                                class="w-full mt-auto py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-lg transition-colors"
+                            >
+                                Lihat Semua Tanaman
+                            </button>
+                        </div>
+
+                        <div
+                            class="bg-white p-6 rounded-xl shadow-md flex flex-col space-y-4 hover:shadow-lg transition-shadow duration-300"
+                        >
+                            <h3 class="text-lg font-semibold">
+                                Aktivitas Terakhir 🏋️
+                            </h3>
+                            <div
+                                class="text-center py-4 border-y border-gray-200"
+                            >
+                                <p class="text-gray-500 text-sm">Kemarin</p>
+                                <p class="text-xl font-bold">
+                                    Latihan Kekuatan
+                                </p>
+                                <p class="text-gray-500">45 Menit</p>
+                            </div>
+                            <button
+                                class="w-full mt-auto py-2 px-4 bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold rounded-lg transition-colors"
+                            >
+                                + Catat Latihan Baru
+                            </button>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <script>
+            lucide.createIcons();
+        </script>
+        <script src="/js/script.js"></script>
+    </body>
+</html>
